@@ -12,11 +12,27 @@ namespace OrchardSkills.OrchardCore.RaspberryPi.Devices
         {
             try
             {
-                var pictureBytes = Pi.Camera.CaptureImageJpeg(640, 480);
-                var targetPath = "/home/pi/picture.jpg";
-                if (File.Exists(targetPath))
-                    File.Delete(targetPath);
-                File.WriteAllBytes(targetPath, pictureBytes);
+                var currentPath = Directory.GetCurrentDirectory();
+                var pos = currentPath.LastIndexOf(Path.DirectorySeparatorChar);
+                if (pos > 0)
+                {
+                    var imagePath = currentPath.Substring(0, pos);
+                    var targetPath = imagePath;
+                    targetPath += Path.DirectorySeparatorChar;
+                    targetPath += "OrchardSkills.OrchardCore.RaspberryPi";
+                    targetPath += Path.DirectorySeparatorChar;
+                    targetPath += "wwwroot";
+                    targetPath += Path.DirectorySeparatorChar;
+                    targetPath += "img";
+                    targetPath += Path.DirectorySeparatorChar;
+                    targetPath += "capture.jpg";
+
+                    var pictureBytes = Pi.Camera.CaptureImageJpeg(640, 480);
+
+                    if (File.Exists(targetPath))
+                        File.Delete(targetPath);
+                    File.WriteAllBytes(targetPath, pictureBytes);
+                }
             }
             catch(Exception ex)
             {
