@@ -34,6 +34,12 @@ namespace OrchardSkills.OrchardCore.RaspberryPi
                 pattern: "Relay",
                 defaults: new { controller = "Relay", action = "Index" }
             );
+            routes.MapAreaControllerRoute(
+                name: "Camera",
+                areaName: "OrchardSkills.OrchardCore.RaspberryPi",
+                pattern: "Camera",
+                defaults: new { controller = "Camera", action = "Index" }
+            );
         }
     }
 }

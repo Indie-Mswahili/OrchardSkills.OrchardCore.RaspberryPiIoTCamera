@@ -245,6 +245,23 @@
                       "Owner": null,
                       "Author": "[js: parameters('AdminUsername')]",
                       "LinkMenuItemPart": {
+                        "Name": "Camera",
+                        "Url": "Camera"
+                      },
+                      "LinkMenuItem": {}
+                    },
+                    {
+                      "ContentItemId": "[js: uuid()]",
+                      "ContentItemVersionId": null,
+                      "ContentType": "LinkMenuItem",
+                      "DisplayText": null,
+                      "Latest": false,
+                      "Published": false,
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": null,
+                      "Author": "[js: parameters('AdminUsername')]",
+                      "LinkMenuItemPart": {
                         "Name": "Relay",
                         "Url": "relay"
                       },
