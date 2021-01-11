@@ -15,6 +15,7 @@ namespace OrchardSkills.OrchardCore.RaspberryPi.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.WasImageCaptured = _cameraDevice.WasImageCaptured ? "Yes" : "No";
             return View();
         }
 

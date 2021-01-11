@@ -7,6 +7,8 @@ namespace OrchardSkills.OrchardCore.RaspberryPi.Devices
     public class CameraDevice : IDisposable
     {
         private bool disposedValue = false;
+        private bool wasImageCaptured = false;
+        public bool WasImageCaptured { get; private set; } = false;
 
         public void CaptureImage()
         {
@@ -32,11 +34,17 @@ namespace OrchardSkills.OrchardCore.RaspberryPi.Devices
                     if (File.Exists(targetPath))
                         File.Delete(targetPath);
                     File.WriteAllBytes(targetPath, pictureBytes);
+                    wasImageCaptured = true;
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                wasImageCaptured = false;
+            }
+            finally
+            {
+                WasImageCaptured = wasImageCaptured;
             }
         }
         protected virtual void Dispose(bool disposing)

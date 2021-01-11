@@ -1,9 +1,18 @@
 ﻿<div class="p-5 text-center bg-image" style="height: 100vh;">
-    <img class="light-off-on-img" src="/OrchardSkills.OrchardCore.RaspberryPi/img/camera.png" alt="">
+    @if (@ViewBag.WasImageCaptured == "Yes")
+    {
+        <img class="light-off-on-img" src="/OrchardSkills.OrchardCore.RaspberryPi/img/capture.jpg" alt="">
+    }
+    @if (@ViewBag.WasImageCaptured == "No")
+    {
+        <img class="light-off-on-img" src="/OrchardSkills.OrchardCore.RaspberryPi/img/camera.png" alt="">
+    }
     <img src="" alt="">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white">
+                <h1 class="mb-3" style="color: white !important">Raspberry Pi IoT Camera</h1>
+                <h4 class="mb-3" style="color: white !important">Was image captured <strong>@ViewBag.WasImageCaptured</strong></h4>
                 <a class="btn btn-success fw-bolder btn-lg" style="color: white !important" asp-action="CaptureImage">Capture Image</a>
             </div>
         </div>
